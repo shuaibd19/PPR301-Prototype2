@@ -19,9 +19,12 @@ public class NewCharacterContoller2D : MonoBehaviour
 
     bool grounded;
 
+    SpriteRenderer rend;
+
     private void Start()
     {
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        rend = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -60,11 +63,13 @@ public class NewCharacterContoller2D : MonoBehaviour
         //checking for look direction
         if (moveDirection.x > 0 && !facingRight)
         {
+            rend.flipX = true;
             facingRight = true;
             Debug.Log("Right");
         }
         else if (moveDirection.x < 0 && facingRight)
         {
+            rend.flipX = false;
             facingRight = false;
             Debug.Log("Left");
         }
